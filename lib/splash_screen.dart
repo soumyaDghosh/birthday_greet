@@ -28,7 +28,7 @@ class StartState extends State<SplashScreen> {
 
   route() {
     Navigator.pushReplacement(context, MaterialPageRoute(
-        builder: (context) => SecondScreen()
+        builder: (context) => HomePage()
       )
     );
   }
@@ -42,11 +42,14 @@ class StartState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-              child: Image.asset("images/logo.png"),
+              child: Image.asset(
+                "assets/logo.png",
+                height: 150.0,
+                ),
             ),
             Padding(padding: EdgeInsets.only(top: 20.0)),
             Text(
-              "Splash Screen",
+              "Birthday App",
               style: TextStyle(
                   fontSize: 20.0,
                   color: Colors.white
@@ -56,7 +59,20 @@ class StartState extends State<SplashScreen> {
             CircularProgressIndicator(
               backgroundColor: Colors.white,
               strokeWidth: 1,
-            )
+            ),
+            Text(
+              "Powered By:",
+              style: TextStyle(
+                fontSize: 15.0,
+                color: Colors.white,
+                ),
+              ),
+            Text(
+              "Tenter",
+              style: TextStyle(
+                color: Colors.white,
+              ),
+              ),
           ],
         ),
       ),
