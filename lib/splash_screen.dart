@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'second_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,7 +15,6 @@ class StartState extends State<SplashScreen> {
     return initScreen(context);
   }
 
-
   @override
   void initState() {
     super.initState();
@@ -27,14 +27,11 @@ class StartState extends State<SplashScreen> {
   }
 
   route() {
-    Navigator.pushReplacement(context, MaterialPageRoute(
-        builder: (context) => HomePage()
-      )
-    );
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => HomePage()));
   }
 
   initScreen(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Colors.blueAccent,
       body: Center(
@@ -42,37 +39,17 @@ class StartState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-              child: Image.asset(
-                "assets/logo.png",
-                height: 150.0,
-                ),
+              child: Lottie.asset('assets/surprise.json'),
             ),
             Padding(padding: EdgeInsets.only(top: 20.0)),
             Text(
-              "Birthday App",
-              style: TextStyle(
-                  fontSize: 20.0,
-                  color: Colors.white
-              ),
+              "Surprise loading.....",
+              style: TextStyle(fontSize: 20.0, color: Colors.white),
             ),
             Padding(padding: EdgeInsets.only(top: 20.0)),
             CircularProgressIndicator(
               backgroundColor: Colors.white,
-              strokeWidth: 1,
             ),
-            Text(
-              "Powered By:",
-              style: TextStyle(
-                fontSize: 15.0,
-                color: Colors.white,
-                ),
-              ),
-            Text(
-              "Tenter",
-              style: TextStyle(
-                color: Colors.white,
-              ),
-              ),
           ],
         ),
       ),

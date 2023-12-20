@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application/main_drawer.dart';
+import 'package:flutter_application/developer.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -8,118 +8,108 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-  final List<String> _listItem = [
-    'assets/logo.png',
-    'assets/logo.png',
-    'assets/logo.png',
-    'assets/logo.png',
-    'assets/logo.png',
-    'assets/1.jpg',
-    'assets/2.jpg',
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber[400],
+      backgroundColor: Colors.blue[400],
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text("Hello Hasu"),
+        title: CarouselSlider(
+          items: greetings
+              .map((e) => Text(
+                    e,
+                    style: TextStyle(color: Colors.white),
+                  ))
+              .toList(),
+          options: CarouselOptions(
+            autoPlayInterval: const Duration(seconds: 2),
+            autoPlay: true,
+            height: 40,
+            viewportFraction: 1,
+          ),
+        ),
         centerTitle: true,
       ),
-      drawer: MainDrawer(),
-      body: SafeArea(
-        child: Container(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            children: <Widget>[
-              Container(
-                width: double.infinity,
-                height: 130,
+      body: Container(
+        padding: EdgeInsets.all(20.0),
+        child: Column(
+          children: <Widget>[
+            Container(
+              width: double.infinity,
+              height: 130,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  image: DecorationImage(
-                    image: AssetImage('assets/logo2.png'),
-                    fit: BoxFit.cover
-                  )
-                ),
-                child: Container(
-                  decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    gradient: LinearGradient(
-                      begin: Alignment.bottomRight,
-                      colors: [
-                        Colors.black.withOpacity(.4),
-                        Colors.black.withOpacity(.2),
-                      ]
-                    )
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      Text(
-                        "Happy Birthday Dear!", 
-                        style: TextStyle(
+                    gradient:
+                        LinearGradient(begin: Alignment.bottomRight, colors: [
+                      Colors.black.withOpacity(.4),
+                      Colors.black.withOpacity(.2),
+                    ])),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Text(
+                      "Happy Birthday Tintin!",
+                      style: TextStyle(
                           color: Colors.white,
-                          fontSize: 25, 
-                          fontWeight: FontWeight.bold),),
-                      SizedBox(height: 20,),
-                      Container(
-                        height: 40,
-                        margin: EdgeInsets.symmetric(horizontal: 40),
-                        decoration: BoxDecoration(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      height: 40,
+                      margin: EdgeInsets.symmetric(horizontal: 40),
+                      decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Colors.white
-                        ),
-                        child: Center(
+                          color: Colors.white),
+                      child: Center(
                           child: Text(
-                            "You are now 21!", 
-                            style: TextStyle(
-                              color: Colors.grey[900], 
-                              fontWeight: FontWeight.bold),)),
-                      ),
-                      SizedBox(height: 20,),
-                    ],
-                  ),
+                        "You are now 19!",
+                        style: TextStyle(
+                            color: Colors.grey[900],
+                            fontWeight: FontWeight.bold),
+                      )),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(height: 20,),
-              Expanded(
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  children: _listItem.map((item) => 
-                  Card(
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Expanded(
+              child: GridView.count(
+                crossAxisCount: 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                children: List.generate(
+                  6,
+                  (item) => Card(
                     color: Colors.transparent,
-                    elevation: 0,
+                    elevation: 10,
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         image: DecorationImage(
-                          image: AssetImage(item),
-                          fit: BoxFit.cover
-                        )
-                      ),
-                      child: Transform.translate(
-                        offset: Offset(0, 50),
-                        child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 50, vertical: 63),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white
-                          ),
-                          child: Text('Jyoti'),
+                          image: AssetImage('photo_${item + 1}.jpg'),
+                          fit: BoxFit.cover,
                         ),
                       ),
                     ),
-                  )).toList(),
-                )
-              )
-            ],
-          ),
+                  ),
+                ).toList(),
+              ),
+            ),
+          ],
         ),
       ),
     );

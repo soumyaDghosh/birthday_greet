@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'main_drawer.dart';
 
 class Developer extends StatelessWidget {
-  const Developer({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,9 +10,16 @@ class Developer extends StatelessWidget {
           title: Text('Developer'),
         ),
         drawer: MainDrawer(),
-        body: Container(
-        ),
+        body: Container(),
       ),
     );
   }
 }
+
+const greetings = [
+  "Happy Birthday",
+  "Otanjōbiomedetō",
+  "Joyeux anniversaire",
+  "শুভ জন্মদিন",
+  "Alles Gute zum Geburtstag",
+];
