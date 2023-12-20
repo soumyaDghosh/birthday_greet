@@ -22,4 +22,4 @@ jobs:
       - uses: bluefireteam/flutter-gh-pages@v7
         with:
           baseHref: /birthday-greet/
-          webRenderer: canvaskit
+          webRenderer: html
